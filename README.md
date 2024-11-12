@@ -1,27 +1,27 @@
-# 허프만 코드 설명
+# Huffman Code Description
 
-## HuffmanNode 클래스
-각 노드의 빈도(frequencies)와 이름(symbol), 자식노드 중 왼쪽에 있는 노드(left)와 오른쪽에 있는 노드(right)를 정의하는 __init__함수를 포함한 클래스이다.
-즉, 각 노드의 정보를 포함한 객체를 생성하는 클래스이다.
+## HuffmanNode Class
+This class includes the __init__ function that defines the frequency and name (symbol) of each node, and the left and right child nodes.
+In other words, this class creates an object that includes information about each node.
 
-## HuffmanCoding 클래스
-각 노드의 빈도를 기준으로 정렬시켜 트리구조를 만들어 허프만 코드를 작성하는 클래스이다.
-### __init__ 함수
-주어진 데이터로 각 노드의 객체(클래스 안에서는 노드라고 정의)리스트를 만드는 함수이다.
-데이터는 리프 노드가 될 노드들의 심볼을 key로, 빈도를 value로 갖는 딕셔너리 형태로 받는다.
+## HuffmanCoding Class
+This class creates a tree structure by sorting each node based on its frequency and writes a Huffman code.
+### __init__ Function
+This function creates a list of objects (defined as nodes in the class) for each node with the given data.
+The data is received in the form of a dictionary with the symbols of the nodes that will become leaf nodes as keys and the frequencies as values.
 
-### is_leaf 함수
-node를 인자로 받고 그 객체의 자식 노드가 있는지 없는지로 주어진 node가 리프 노드인지 판단하는 함수이다.
+### is_leaf Function
+This function receives a node as an argument and determines whether the given node is a leaf node based on whether or not the object has a child node.
 
-### get_codes 함수
-각 객체가 들어있는 리스트를 각 객체의 빈도를 기준으로 정렬을 한 후 제일 앞에 있는 두 노드(빈도가 가장 작은 두 객체)를 각각 left, right 노드로 정의한다.
-객체가 들어있는 리스트에서 left, right 노드는 제외시키고 left, right 노드의 빈도를 더 한 새로운 노드를 추가한다.
-=> 객체가 들어있는 리스트의 길이가 1이 될 때까지 반복해 빈도 수를 기준으로 정렬된 트리 구조를 갖게 한다.
+### get_codes function
+Sort the list containing each object based on the frequency of each object, and define the two nodes at the front (the two objects with the lowest frequency) as left and right nodes, respectively.
+Exclude the left and right nodes from the list containing the object, and add a new node with the frequency of the left and right nodes added.
+=> Repeat until the length of the list containing the object becomes 1, and obtain a tree structure sorted based on the frequency.
 
-루트 노드를 정의한 후 루트 노드에서부터 각 리프 노드까지의 코드를 생성한다.
-생성된 최종 코드를 반환한다.
+After defining the root node, generate codes from the root node to each leaf node.
+Return the generated final code.
 
-### _get_codes 함수
-빈도 수로 정렬된 트리 구조가 완성되면 최종 코드를 작성하는 함수이다.
-노드를 받고 그 노드의 왼쪽 노드에는 0을 오른쪽 노드에는 1을 추가하여 이를 반복해 최종 허프만 코드를 생성한다.
-만약 받은 노드가 리프 노드라면 최종 허프만 코드를 codes를 반환한다.
+### _get_codes function
+This function writes the final code when the tree structure sorted by frequency is completed.
+Receives a node, adds 0 to the left node of that node, and repeats this to generate the final Huffman code.
+If the received node is a leaf node, return the final Huffman code as codes.
